@@ -16,7 +16,7 @@ function Learn () {
 
 
     const input = useRef()
-    const params = useParams()           
+    const {subjectId, stackName} = useParams()           
     // let subjectId = params.subjectId;
     // let stackName = params.stackName;
 
@@ -24,9 +24,9 @@ function Learn () {
         var domain = "https://puce-upset-hare.cyclic.app"     
 
         if(!stack){
-            if(!!params.subjectId){
-                console.log(`/data/indexcards/${params.subjectId}/${params.stackName}`)
-                fetch(domain + `/data/indexcards/${params.subjectId}/${params.stackName}`)
+            if(!!params){
+                console.log(`/data/indexcards/${subjectId}/${stackName}`)
+                fetch(domain + `/data/indexcards/${subjectId}/${stackName}`)
                 // .then(res=>console.log(res))
                 .then(res=>res.json())
                 .then(res=>{
@@ -39,7 +39,7 @@ function Learn () {
             }
         }
 
-    }, [init])
+    }, [subjectId])
 
 
 
@@ -95,7 +95,7 @@ function Learn () {
 
             <div className="header">
                 <h1>StudyZone</h1>
-                <p>{params.stackName.replace(/_/gi, " ")}</p>
+                <p>{stackName.replace(/_/gi, " ")}</p>
             </div>
 
 
