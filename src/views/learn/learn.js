@@ -95,7 +95,7 @@ function Learn () {
 
             <div className="header">
                 <h1>StudyZone</h1>
-                <p>{stackName.replace(/_/gi, " ")}</p>
+                <p>{params.stackName.replace(/_/gi, " ")}</p>
             </div>
 
 
