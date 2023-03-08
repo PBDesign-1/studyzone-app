@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import "./learn.css";
 
 function Learn () {
-    var domain = "https://puce-upset-hare.cyclic.app"
 
     const [stack, setStack] = useState()
     const [index, setIndex] = useState(0)
@@ -11,25 +10,38 @@ function Learn () {
     const [inputVisability, setInputVisability] = useState(false)
     const [status, setStatus] = useState()
     const [render, setRender] = useState(true)
+    const [init, setInit] = useState(false)
 
 
-    const params = useParams()
+
+
     const input = useRef()
-
+    const params = useParams()           
     let subjectId = params.subjectId;
     let stackName = params.stackName;
 
-
     useEffect(()=>{
-        console.log(`/data/indexcards/${subjectId}/${stackName}`)
-        fetch(domain + `/data/indexcards/${subjectId}/${stackName}`)
-        // .then(res=>console.log(res))
-        .then(res=>res.json())
-        .then(res=>{
-            console.log(res.response)
-            setStack({indexcards: res.response.stack.indexcards.sort((a,b)=>Math.random() - 0.5), ...res.response.stack})
-        })
-    }, [])
+        var domain = "https://puce-upset-hare.cyclic.app"     
+
+        if(!stack){
+            if(!!params.subjectId){
+                console.log(`/data/indexcards/${subjectId}/${stackName}`)
+                fetch(domain + `/data/indexcards/${subjectId}/${stackName}`)
+                // .then(res=>console.log(res))
+                .then(res=>res.json())
+                .then(res=>{
+                    console.log(res.response)
+                    if(!stack){
+                        setStack({indexcards: res.response.stack.indexcards.sort((a,b)=>Math.random() - 0.5), ...res.response.stack})
+                    }
+                    
+                })
+            }else {
+                setInit(b=>!b)
+            }
+        }
+
+    }, [init])
 
 
 

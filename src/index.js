@@ -8,7 +8,7 @@ import Learn from './views/learn/learn';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} exact />
@@ -17,7 +17,7 @@ root.render(
       {/* <Route path="/" element={<App />} />   */}
     </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
