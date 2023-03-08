@@ -22,7 +22,6 @@ function Learn () {
     useEffect(()=>{
         var domain = "https://puce-upset-hare.cyclic.app"     
 
-        if(!stack){
             if(!!subjectId){
                 console.log(`/data/indexcards/${subjectId}/${stackName}`)
                 fetch(domain + `/data/indexcards/${subjectId}/${stackName}`)
@@ -33,7 +32,6 @@ function Learn () {
                     setStack({indexcards: res.response.stack.indexcards.sort((a,b)=>Math.random() - 0.5), ...res.response.stack})
                     
                 })
-            }
         }
 
     }, [subjectId, stackName])
