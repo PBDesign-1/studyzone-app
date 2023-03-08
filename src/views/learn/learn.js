@@ -24,7 +24,7 @@ function Learn () {
         var domain = "https://puce-upset-hare.cyclic.app"     
 
         if(!stack){
-            if(!!params){
+            if(!!subjectId){
                 console.log(`/data/indexcards/${subjectId}/${stackName}`)
                 fetch(domain + `/data/indexcards/${subjectId}/${stackName}`)
                 // .then(res=>console.log(res))
