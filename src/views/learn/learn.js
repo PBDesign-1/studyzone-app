@@ -8,6 +8,8 @@ function Learn () {
     const [index, setIndex] = useState(0)
     const [front, setFront] = useState(true)
     const [inputVisability, setInputVisability] = useState(false)
+    const [inputVisabilityToggleVisability, setInputVisabilityToggleVisability] = useState(true)
+
     const [status, setStatus] = useState()
     const [render, setRender] = useState(true)
 
@@ -84,7 +86,7 @@ function Learn () {
     return (
         <div className="learn">
             <div className="background"></div>
-            <div className="inputVisabilityToggle" onClick={toggleInput} style={{opacity: inputVisability ? 0.3 : 1}}>
+            <div className="inputVisabilityToggle" onClick={toggleInput} style={{opacity: inputVisability ? 0.3 : 1, visibility: inputVisabilityToggleVisability ? "visible" : "hidden"}}>
                 <p>Wissen testen</p>
             </div>
 
@@ -127,8 +129,8 @@ function Learn () {
 
             {(inputVisability && index < stack.indexcards.length) && (
                 <div className="input">
-                    <input type="text" ref={input} />
-                    <img alt="" src="/send_icon.png" onClick={checkInput}></img>
+                    <input type="text" ref={input} onFocus={()=>setInputVisabilityToggleVisability(false)} onBlur={()=>setInputVisabilityToggleVisability(true)} />
+                    <img alt="" src="/send_icon.png" className="input-input" onClick={checkInput}></img>
                 </div>
             )}
             
