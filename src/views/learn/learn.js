@@ -10,7 +10,6 @@ function Learn () {
     const [inputVisability, setInputVisability] = useState(false)
     const [status, setStatus] = useState()
     const [render, setRender] = useState(true)
-    const [init, setInit] = useState(false)
 
 
 
@@ -34,12 +33,10 @@ function Learn () {
                     setStack({indexcards: res.response.stack.indexcards.sort((a,b)=>Math.random() - 0.5), ...res.response.stack})
                     
                 })
-            }else {
-                setInit(b=>!b)
             }
         }
 
-    }, [subjectId])
+    }, [subjectId, stackName])
 
 
 
@@ -74,7 +71,7 @@ function Learn () {
     }
 
     function checkInput (e){
-        setStatus((input.current.value).toLowerCase() == (stack.indexcards[index].answer).toLowerCase())
+        setStatus((input.current.value).toLowerCase() === (stack.indexcards[index].answer).toLowerCase())
         setFront(false)
     }
 
@@ -103,7 +100,7 @@ function Learn () {
             {!!stack && (index < stack.indexcards.length ? (
                 <div className="content">
                     <div onClick={leftButton} className="button">
-                      <img src="/arrow_left_icon.png"></img>
+                      <img alt="" src="/arrow_left_icon.png"></img>
                     </div>
 
                     <div className="indexcard" onClick={()=>setFront(f=>!f)}>
@@ -116,7 +113,7 @@ function Learn () {
                     </div>  
 
                     <div onClick={rightButton} style={{display: "flex", justifyContent: "right"}} className="button">
-                        <img src="/arrow_left_icon.png" style={{transform: "rotate(180deg)"}}></img>
+                        <img alt="" src="/arrow_left_icon.png" style={{transform: "rotate(180deg)"}}></img>
                     </div>
                 </div>
             ) : (
@@ -133,7 +130,7 @@ function Learn () {
             {(inputVisability && index < stack.indexcards.length) && (
                 <div className="input">
                     <input type="text" ref={input} />
-                    <img src="/send_icon.png" onClick={checkInput}></img>
+                    <img alt="" src="/send_icon.png" onClick={checkInput}></img>
                 </div>
             )}
             
