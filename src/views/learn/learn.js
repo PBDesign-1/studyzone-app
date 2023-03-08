@@ -17,23 +17,21 @@ function Learn () {
 
     const input = useRef()
     const params = useParams()           
-    let subjectId = params.subjectId;
-    let stackName = params.stackName;
+    // let subjectId = params.subjectId;
+    // let stackName = params.stackName;
 
     useEffect(()=>{
         var domain = "https://puce-upset-hare.cyclic.app"     
 
         if(!stack){
             if(!!params.subjectId){
-                console.log(`/data/indexcards/${subjectId}/${stackName}`)
-                fetch(domain + `/data/indexcards/${subjectId}/${stackName}`)
+                console.log(`/data/indexcards/${params.subjectId}/${params.stackName}`)
+                fetch(domain + `/data/indexcards/${params.subjectId}/${params.stackName}`)
                 // .then(res=>console.log(res))
                 .then(res=>res.json())
                 .then(res=>{
                     console.log(res.response)
-                    if(!stack){
-                        setStack({indexcards: res.response.stack.indexcards.sort((a,b)=>Math.random() - 0.5), ...res.response.stack})
-                    }
+                    setStack({indexcards: res.response.stack.indexcards.sort((a,b)=>Math.random() - 0.5), ...res.response.stack})
                     
                 })
             }else {
