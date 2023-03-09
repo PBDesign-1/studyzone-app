@@ -129,7 +129,7 @@ function Learn () {
 
             {(inputVisability && index < stack.indexcards.length) && (
                 <div className="input">
-                    <input type="text" ref={input} onFocus={()=>setInputVisabilityToggleVisability(false)} onBlur={()=>setInputVisabilityToggleVisability(true)} />
+                    <input type="text" ref={input} onFocus={()=>setInputVisabilityToggleVisability(false)} onBlur={()=>setTimeout(()=>setInputVisabilityToggleVisability(true), 100)} />
                     <img alt="" src="/send_icon.png" className="input-input" onClick={checkInput}></img>
                 </div>
             )}
