@@ -23,18 +23,13 @@ function Learn () {
 
     useEffect(()=>{
         var domain = "https://puce-upset-hare.cyclic.app"     
-
-            if(!!subjectId){
-                console.log(`/data/indexcards/${subjectId}/${stackName}`)
-                fetch(domain + `/data/indexcards/${subjectId}/${stackName}`)
-                // .then(res=>console.log(res))
-                .then(res=>res.json())
-                .then(res=>{
-                    console.log(res.response)
-                    setStack({indexcards: res.response.stack.indexcards.sort((a,b)=>Math.random() - 0.5), ...res.response.stack})
-                    
-                })
-        }
+        fetch(domain + `/data/indexcards/${subjectId}/${stackName}`)
+        .then(res=>res.json())
+        .then(res=>{
+            console.log(res.response)
+            setStack({indexcards: res.response.stack.indexcards.sort((a,b)=>Math.random() - 0.5), ...res.response.stack})
+            
+        })
 
     }, [subjectId, stackName])
 
@@ -124,6 +119,8 @@ function Learn () {
                     </div>
                 </div>
             ))}
+
+            {!stack && <div className="loader-container"><div className="loader"></div></div>}
 
 
 
