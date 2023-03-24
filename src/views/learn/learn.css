@@ -52,7 +52,7 @@ body {
     z-index: 5;
 }
 
-.end-screen {
+.end-screen, .chooseDirection {
     width: 70%;
     margin: 0 auto;
     height: 70vh;
@@ -61,6 +61,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    flex-direction: column;
 }
 .end-screen h1 {
     font-size: 40px;
@@ -72,6 +73,24 @@ body {
     padding: 10px 20px;
     margin: 0 auto;
 }
+.chooseDirection {
+    gap: 10px;
+}
+.chooseDirection button {
+    display: block;
+    clear: both;
+    font-size: 20px;
+    padding: 7.5px 15px;
+    background-color: whitesmoke;
+    cursor: pointer;
+    border-radius: 7.5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+.chooseDirection button:hover {
+    background-color: black;
+    color: whitesmoke;
+}
+
 
 
 

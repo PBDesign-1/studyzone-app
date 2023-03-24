@@ -12,6 +12,10 @@ function Learn () {
 
     const [status, setStatus] = useState()
     const [render, setRender] = useState(true)
+    const [direction, setDirection] = useState({
+        init: false,
+        direction: ["answer", "question"]
+    })
 
 
 
@@ -26,7 +30,6 @@ function Learn () {
         fetch(domain + `/data/indexcards/${subjectId}/${stackName}`)
         .then(res=>res.json())
         .then(res=>{
-            console.log(res.response)
             setStack({indexcards: res.response.stack.indexcards.sort((a,b)=>Math.random() - 0.5), ...res.response.stack})
             
         })
@@ -77,6 +80,7 @@ function Learn () {
 
 
 
+    console.log(stack)
 
     return (
         <div className="learn">
@@ -93,6 +97,7 @@ function Learn () {
 
 
             {!!stack && (index < stack.indexcards.length ? (
+                !stack.changable || direction.init ? (
                 <div className="content">
                     <div onClick={leftButton} className="button">
                       <img alt="" src="/arrow_left_icon.png"></img>
@@ -100,10 +105,10 @@ function Learn () {
 
                     <div className="indexcard" onClick={()=>setFront(f=>!f)}>
                         <div className={"indexcard-front " + status} style={{transform: `rotateY(${front ? "0deg" : "180deg"})`}}>
-                            <p>{stack.indexcards[index].question}</p>
+                            <p>{stack.indexcards[index][direction.direction[0]]}</p>
                         </div>   
                         <div className={"indexcard-back " + status} style={{transform: `rotateY(${front ? "180deg" : "0deg"})`}}>
-                            <p>{render && stack.indexcards[index].answer}</p>
+                            <p>{render && stack.indexcards[index][direction.direction[1]]}</p>
                         </div>                      
                     </div>  
 
@@ -111,7 +116,12 @@ function Learn () {
                         <img alt="" src="/arrow_left_icon.png" style={{transform: "rotate(180deg)"}}></img>
                     </div>
                 </div>
-            ) : (
+            ): <div>
+                <div className="chooseDirection">
+                    <button onClick={b=>setDirection({init: true, direction: ["question", "answer"]})}>{stack.questionName + " --> " + stack.answerName}</button>
+                    <button onClick={b=>setDirection({init: true, direction: ["answer", "question"]})}>{stack.answerName + " --> " + stack.questionName}</button>
+                </div>
+            </div>) : (
                 <div className="end-screen">
                     <div>
                         <h1>Du hast {stack.indexcards.length} Karteikarten geübt</h1>
