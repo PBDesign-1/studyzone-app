@@ -72,6 +72,7 @@ body {
     font-size: 18px;
     padding: 10px 20px;
     margin: 0 auto;
+    border-radius: 7.5px;
 }
 .chooseDirection {
     gap: 10px;
@@ -111,10 +112,11 @@ body {
 }
 
 .indexcard-front, .indexcard-back {
-    display: flex;    
+    display: flex;   
+    flex-direction: column; 
     align-items: center;
     text-align: center;
-    justify-content: center;
+    justify-content: space-between;
     grid-row: 1;
     grid-column: 1;
     height: calc(100% - 120px);
@@ -142,6 +144,18 @@ body {
     height: 30px;
     opacity: 80%;
 }
+.indexcard-index {
+    width: 100%;
+    font-size: 16px;
+    text-align: right;
+    opacity: 0.5;
+    margin: 0;
+}
+
+
+
+
+
 
 
 
@@ -247,7 +261,6 @@ body {
         padding: 20px;
         border-radius: 15px;
         font-size: 18px;
-    
     }
     .indexcard {
         display: grid;

@@ -105,10 +105,14 @@ function Learn () {
 
                     <div className="indexcard" onClick={()=>setFront(f=>!f)}>
                         <div className={"indexcard-front " + status} style={{transform: `rotateY(${front ? "0deg" : "180deg"})`}}>
+                            <p className="indexcard-index">{index + " / " + stack.indexcards.length}</p>
                             <p>{stack.indexcards[index][direction.direction[0]]}</p>
+                            <p className="indexcard-index" style={{visibility: "hidden"}}>{index + " / " + stack.indexcards.length}</p>
                         </div>   
                         <div className={"indexcard-back " + status} style={{transform: `rotateY(${front ? "180deg" : "0deg"})`}}>
+                            <p className="indexcard-index" style={{visibility: "hidden"}}>{index + " / " + stack.indexcards.length}</p>
                             <p>{render && stack.indexcards[index][direction.direction[1]]}</p>
+                            <p className="indexcard-index" style={{visibility: "hidden"}}>{index + " / " + stack.indexcards.length}</p>
                         </div>                      
                     </div>  
 
