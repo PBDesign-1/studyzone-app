@@ -69,7 +69,7 @@ function Learn () {
     }
 
     function checkInput (e){
-        setStatus((input.current.value).toLowerCase() === (stack.indexcards[index].answer).toLowerCase())
+        setStatus((input.current.value).toLowerCase().replace(/./g, "").replace(/ *\([^)]*\) */g, "") === (stack.indexcards[index].answer).toLowerCase().replace(/./g, "").replace(/ *\([^)]*\) */g, ""))
         setFront(false)
     }
 
